@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detection</title>
+    <style>
+        /* Basic styling for a professional look */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #4a4e69;
+            font-weight: 600;
+        }
+        label {
+            font-size: 1rem;
+            color: #495057;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            margin-top: 8px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        /* Spam/ham result colors */
+        .spam {
+            color: #d9534f;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        .not {
+            color: #28a745;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spam Detection</h1>
+        <form action="/" method="post">
+            <label for="email">Enter Email Text:</label>
+            <textarea name="email_text" id="email" rows="4" cols="50">{{ email_text }}</textarea>
+            <br>
+            <button type="submit">Detect Spam</button>
+        </form>
+
+        <!-- Display result with specific styling based on spam or not spam -->
+        {% if result %}
+            <div class="result {% if 'not a Spam' in result %}not{% else %}spam{% endif %}">
+                <h2>{{ result }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+
